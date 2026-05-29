@@ -18,10 +18,7 @@
 
         body {
             font-family: 'SF Pro Display', -apple-system, BlinkMacSystemFont, sans-serif;
-            
-            /* Gọi trực tiếp ảnh nền macos-ventura từ thư mục assets trong repo của bạn */
             background-image: url('assets/macos-ventura.jpg'); 
-            
             background-size: cover;
             background-position: center;
             background-attachment: fixed;
@@ -32,76 +29,76 @@
             padding: 20px;
         }
 
-        /* Khung chứa hiệu ứng kính lỏng (Liquid Glass Base) */
+        /* KHUNG KÍNH LỎNG 3D KHÔNG DÙNG SVG FILTER (CHỐNG LỖI CORS) */
         .container {
             width: 100%;
             max-width: 430px;
             padding: 45px 28px;
-            border-radius: 40px;
-            position: relative;
             text-align: center;
+            position: relative;
             
-            /* Lớp nền mô phỏng độ dày giọt nước đặc */
-            background: linear-gradient(135deg, rgba(255, 255, 255, 0.22) 0%, rgba(255, 255, 255, 0.02) 50%, rgba(255, 255, 255, 0.08) 100%);
+            /* Dáng bo góc giọt nước bất đối xứng nhẹ mô phỏng chất lỏng tự nhiên (Fluid Shape) */
+            border-radius: 48px 40px 45px 42px;
             
-            /* Tăng mật độ khúc xạ ánh sáng nền phía sau */
-            backdrop-filter: blur(25px) saturate(140%);
-            -webkit-backdrop-filter: blur(25px) saturate(140%);
+            /* Lớp nền mô phỏng độ dầy cô đặc của khối thủy tinh đổ khuôn */
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.28) 0%, rgba(255, 255, 255, 0.03) 40%, rgba(255, 255, 255, 0.12) 100%);
             
-            /* Đổ khối viền bóng láng dầy quanh mép kính */
-            border-top: 2.5px solid rgba(255, 255, 255, 0.65);
-            border-left: 2.5px solid rgba(255, 255, 255, 0.35);
-            border-right: 1px solid rgba(255, 255, 255, 0.1);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            /* Tăng độ nhòe sâu để bẻ cong luồng sáng phía sau */
+            backdrop-filter: blur(30px) saturate(130%);
+            -webkit-backdrop-filter: blur(30px) saturate(130%);
             
-            /* Bóng đổ sâu đa tầng tạo độ nổi khối 3D tách biệt khỏi màn hình */
+            /* Tạo viền nổi khối cơ học bóng loáng ôm sát mép kính */
+            border-top: 3px solid rgba(255, 255, 255, 0.7);
+            border-left: 2.5px solid rgba(255, 255, 255, 0.4);
+            border-right: 1.5px solid rgba(255, 255, 255, 0.15);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            
+            /* Phức hợp bóng đổ đa tầng (Phản chiếu ánh sáng nội khối + Bóng tản bề mặt nền) */
             box-shadow: 
-                inset 0 4px 12px rgba(255, 255, 255, 0.4),
-                inset 0 -4px 12px rgba(0, 0, 0, 0.15),
-                0 4px 30px rgba(0, 0, 0, 0.1),
-                0 30px 60px rgba(0, 0, 0, 0.35);
+                inset 0 6px 16px rgba(255, 255, 255, 0.5),
+                inset -4px -6px 16px rgba(0, 0, 0, 0.08),
+                0 10px 30px rgba(0, 0, 0, 0.1),
+                0 35px 70px rgba(0, 0, 0, 0.35);
         }
 
-        /* Tạo lớp phủ bẻ cong Liquid chạy ngầm ở viền để chữ và avatar KHÔNG bị nhòe */
-        .container::before {
+        /* Vệt sáng bóng loáng phản chiếu chạy chéo dọc thân kính */
+        .container::after {
             content: '';
             position: absolute;
-            top: -2px; left: -2px; right: -2px; bottom: -2px;
-            border-radius: 40px;
-            background: transparent;
-            z-index: -1;
-            filter: url('#fluid-distortion');
+            top: 0; left: 0; right: 0; bottom: 0;
+            border-radius: inherit;
+            background: linear-gradient(105deg, rgba(255, 255, 255, 0.15) 0%, rgba(255, 255, 255, 0) 30%, rgba(255, 255, 255, 0) 80%, rgba(255, 255, 255, 0.1) 100%);
             pointer-events: none;
         }
 
-        /* Avatar phom vuông bo góc mượt chuẩn Apple Music để đồng bộ khối hình ảnh Minecraft */
+        /* Avatar phom vuông bo mượt chuẩn chỉnh đĩa nhạc mẫu */
         .avatar {
-            width: 100px;
-            height: 100px;
-            border-radius: 28px; 
-            border: 1.5px solid rgba(255, 255, 255, 0.5);
+            width: 105px;
+            height: 105px;
+            border-radius: 30px; 
+            border: 2px solid rgba(255, 255, 255, 0.6);
             object-fit: cover;
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.25);
-            margin-bottom: 6px;
+            box-shadow: 0 12px 28px rgba(0, 0, 0, 0.25);
+            margin-bottom: 4px;
         }
 
-        /* Nội dung Text căng nét tuyệt đối */
+        /* Chữ căng nét, nổi bật trên nền kính */
         h1 {
             color: #ffffff;
-            font-size: 1.65rem;
+            font-size: 1.7rem;
             font-weight: 600;
             letter-spacing: -0.022em;
-            margin: 14px 0 6px 0;
-            text-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
+            margin: 16px 0 6px 0;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
         }
 
         .bio-text {
-            color: rgba(255, 255, 255, 0.8);
+            color: rgba(255, 255, 255, 0.85);
             font-size: 0.95rem;
             font-weight: 400;
             line-height: 1.4;
             margin-bottom: 35px;
-            text-shadow: 0 1px 4px rgba(0, 0, 0, 0.15);
+            text-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
         }
 
         .links-group {
@@ -110,69 +107,53 @@
             gap: 16px;
         }
 
-        /* Nút bấm giọt nước thủy tinh bóng loáng */
+        /* Nút bấm giọt nước thủy tinh bóng bẩy */
         .bio-link {
             display: flex;
             align-items: center;
             justify-content: center;
-            padding: 16px;
-            background: linear-gradient(135deg, rgba(255, 255, 255, 0.12) 0%, rgba(255, 255, 255, 0.03) 100%);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
+            padding: 16.5px;
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.15) 0%, rgba(255, 255, 255, 0.03) 100%);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
             
-            border-top: 1.5px solid rgba(255, 255, 255, 0.5);
-            border-left: 1.5px solid rgba(255, 255, 255, 0.25);
-            border-radius: 18px;
+            border-top: 1.5px solid rgba(255, 255, 255, 0.55);
+            border-left: 1.5px solid rgba(255, 255, 255, 0.3);
+            border-radius: 20px;
             
             color: #ffffff;
             text-decoration: none;
             font-size: 1rem;
             font-weight: 500;
             letter-spacing: -0.011em;
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.15);
             
             box-shadow: 
-                inset 0 2px 4px rgba(255, 255, 255, 0.25),
-                0 4px 15px rgba(0, 0, 0, 0.15);
+                inset 0 2.5px 5px rgba(255, 255, 255, 0.3),
+                0 4px 15px rgba(0, 0, 0, 0.12);
                 
-            /* Đàn hồi mượt bằng hàm Cubic-Bezier */
             transition: transform 0.4s cubic-bezier(0.165, 0.84, 0.44, 1), 
                         background-color 0.3s ease, 
                         border-color 0.3s ease, 
                         box-shadow 0.3s ease;
         }
 
-        /* Hiệu ứng tương tác Liquid-Swell khi rà chuột */
+        /* Hiệu ứng đàn hồi và đổi màu khúc xạ sáng khi di chuột */
         .bio-link:hover {
-            background: linear-gradient(135deg, rgba(255, 255, 255, 0.25) 0%, rgba(255, 255, 255, 0.06) 100%);
-            border-color: rgba(255, 255, 255, 0.65);
-            transform: scale(1.03) translateY(-1px);
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.28) 0%, rgba(255, 255, 255, 0.07) 100%);
+            border-color: rgba(255, 255, 255, 0.7);
+            transform: scale(1.035) translateY(-1px);
             box-shadow: 
-                inset 0 4px 8px rgba(255, 255, 255, 0.35),
-                0 12px 28px rgba(0, 0, 0, 0.3);
+                inset 0 4px 10px rgba(255, 255, 255, 0.4),
+                0 12px 30px rgba(0, 0, 0, 0.25);
         }
 
         .bio-link:active {
             transform: scale(0.975);
         }
-
-        /* Ẩn bộ lọc cấu trúc SVG trên màn hình hiển thị */
-        .liquid-filter {
-            position: absolute;
-            width: 0; height: 0;
-            visibility: hidden;
-        }
     </style>
 </head>
 <body>
-
-    <svg class="liquid-filter">
-        <defs>
-            <filter id="fluid-distortion">
-                <feTurbulence type="fractalNoise" baseFrequency="0.012" numOctaves="3" result="noise" />
-                <feDisplacementMap in="SourceGraphic" in2="noise" scale="5" xChannelSelector="R" yChannelSelector="G" />
-            </filter>
-        </defs>
-    </svg>
 
     <div class="container">
         <img src="assets/avatar.webp" alt="JunkiMC Avatar" class="avatar">
