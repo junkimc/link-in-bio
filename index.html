@@ -18,7 +18,10 @@
 
         body {
             font-family: 'SF Pro Display', -apple-system, BlinkMacSystemFont, sans-serif;
-            background-image: url('https://images.unsplash.com/photo-1579546929518-9e396f3cc809?q=80&w=1970&auto=format&fit=crop'); 
+            
+            /* Gọi trực tiếp ảnh nền macos-ventura từ thư mục assets trong repo của bạn */
+            background-image: url('assets/macos-ventura.jpg'); 
+            
             background-size: cover;
             background-position: center;
             background-attachment: fixed;
@@ -71,11 +74,11 @@
             pointer-events: none;
         }
 
-        /* Avatar bo góc chuẩn Mac, đổ bóng chìm sâu vào khối kính */
+        /* Avatar phom vuông bo góc mượt chuẩn Apple Music để đồng bộ khối hình ảnh Minecraft */
         .avatar {
-            width: 96px;
-            height: 96px;
-            border-radius: 28px; /* Bo vuông góc mềm mượt chuẩn mẫu */
+            width: 100px;
+            height: 100px;
+            border-radius: 28px; 
             border: 1.5px solid rgba(255, 255, 255, 0.5);
             object-fit: cover;
             box-shadow: 0 10px 25px rgba(0, 0, 0, 0.25);
@@ -93,7 +96,7 @@
         }
 
         .bio-text {
-            color: rgba(255, 255, 255, 0.75);
+            color: rgba(255, 255, 255, 0.8);
             font-size: 0.95rem;
             font-weight: 400;
             line-height: 1.4;
@@ -131,7 +134,7 @@
                 inset 0 2px 4px rgba(255, 255, 255, 0.25),
                 0 4px 15px rgba(0, 0, 0, 0.15);
                 
-            /* Đàn hồi siêu mượt bằng hàm Mac Cubic-Bezier */
+            /* Đàn hồi mượt bằng hàm Cubic-Bezier */
             transition: transform 0.4s cubic-bezier(0.165, 0.84, 0.44, 1), 
                         background-color 0.3s ease, 
                         border-color 0.3s ease, 
@@ -152,7 +155,7 @@
             transform: scale(0.975);
         }
 
-        /* Ẩn bộ lọc SVG trên màn hình */
+        /* Ẩn bộ lọc cấu trúc SVG trên màn hình hiển thị */
         .liquid-filter {
             position: absolute;
             width: 0; height: 0;
@@ -172,7 +175,7 @@
     </svg>
 
     <div class="container">
-        <img src="https://images.unsplash.com/photo-1620641788421-7a1c342ea42e?q=80&w=1974&auto=format&fit=crop" alt="JunkiMC Avatar" class="avatar">
+        <img src="assets/avatar.webp" alt="JunkiMC Avatar" class="avatar">
         
         <h1>JunkiMC</h1>
         <p class="bio-text">Minecraft creator. Builds, mods & chaos. Catch me on the links below.</p>
