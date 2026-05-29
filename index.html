@@ -18,7 +18,10 @@
 
         body {
             font-family: 'SF Pro Display', -apple-system, BlinkMacSystemFont, sans-serif;
-            background-image: url('https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=1964&auto=format&fit=crop'); 
+            
+            /* Ảnh nền trừu tượng tối mượt mà, sâu lắng tạo độ tương phản cao cho lớp kính */
+            background-image: url('https://images.unsplash.com/photo-1579546929518-9e396f3cc809?q=80&w=1970&auto=format&fit=crop'); 
+            
             background-size: cover;
             background-position: center;
             background-attachment: fixed;
@@ -43,6 +46,7 @@
             text-align: center;
         }
 
+        /* Ảnh đại diện được bo tròn hoàn hảo */
         .avatar {
             width: 96px;
             height: 96px;
@@ -90,25 +94,23 @@
             font-weight: 500;
             letter-spacing: -0.011em;
             box-shadow: inset 0 1px 0px rgba(255, 255, 255, 0.1), 0 4px 12px rgba(0, 0, 0, 0.15);
-            
-            /* Định nghĩa thuộc tính chuyển động mượt mà sử dụng Cubic-Bezier của Apple */
             transition: transform 0.3s cubic-bezier(0.25, 1, 0.5, 1), 
                         background-color 0.3s ease, 
                         border-color 0.3s ease, 
                         box-shadow 0.3s ease;
         }
 
-        /* Hiệu ứng nâng cao khi di chuột đến (Hover) */
+        /* Hiệu ứng khi di chuột đến (Hover) */
         .bio-link:hover {
-            background-color: rgba(255, 255, 255, 0.08); /* Tăng độ sáng nền kính */
-            border-color: rgba(255, 255, 255, 0.45); /* Viền trắng sáng rõ hơn */
-            transform: scale(1.025); /* Phóng to nhẹ 2.5% tạo độ nổi khối vật lý */
-            box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.3), 0 8px 24px rgba(0, 0, 0, 0.35); /* Đổ bóng sâu hơn xuống nền */
+            background-color: rgba(255, 255, 255, 0.08);
+            border-color: rgba(255, 255, 255, 0.45);
+            transform: scale(1.025);
+            box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.3), 0 8px 24px rgba(0, 0, 0, 0.35);
         }
 
         /* Hiệu ứng khi nhấn giữ chuột (Click) */
         .bio-link:active {
-            transform: scale(0.98); /* Lõm nhẹ xuống tạo cảm giác như nút bấm thật */
+            transform: scale(0.98);
             background-color: rgba(255, 255, 255, 0.12);
         }
     </style>
@@ -116,7 +118,7 @@
 <body>
 
     <div class="container">
-        <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb" alt="JunkiMC Avatar" class="avatar">
+        <img src="https://images.unsplash.com/photo-1620641788421-7a1c342ea42e?q=80&w=1974&auto=format&fit=crop" alt="JunkiMC Avatar" class="avatar">
         
         <h1>JunkiMC</h1>
         <p class="bio-text">Minecraft creator. Builds, mods & chaos. Catch me on the links below.</p>
