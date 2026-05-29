@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>JunkiMC | Link-in-Bio</title>
+    <title>JunkiMC | Liquid Glass Bio</title>
     
     <link href="https://fonts.cdnfonts.com/css/sf-pro-display" rel="stylesheet">
     
@@ -18,10 +18,7 @@
 
         body {
             font-family: 'SF Pro Display', -apple-system, BlinkMacSystemFont, sans-serif;
-            
-            /* Ảnh nền trừu tượng tối mượt mà, sâu lắng tạo độ tương phản cao cho lớp kính */
             background-image: url('https://images.unsplash.com/photo-1579546929518-9e396f3cc809?q=80&w=1970&auto=format&fit=crop'); 
-            
             background-size: cover;
             background-position: center;
             background-attachment: fixed;
@@ -30,29 +27,59 @@
             justify-content: center;
             align-items: center;
             padding: 20px;
+            overflow-x: hidden;
         }
 
-        /* Khung chứa chính phong cách kính Clear Glass */
+        /* Nhúng bộ lọc chất lỏng SVG tạo độ biến dạng khúc xạ */
+        .liquid-filter {
+            position: absolute;
+            width: 0;
+            height: 0;
+        }
+
+        /* Khung chứa Liquid Glass dạng giọt nước đặc */
         .container {
             width: 100%;
             max-width: 430px;
-            padding: 40px 24px;
-            background: rgba(255, 255, 255, 0.01);
-            backdrop-filter: blur(2px);
-            -webkit-backdrop-filter: blur(2px);
-            border: 1px solid rgba(255, 255, 255, 0.25);
-            border-radius: 32px;
-            box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.3), 0 12px 40px 0 rgba(0, 0, 0, 0.5);
+            padding: 45px 28px;
+            
+            /* Đổ nền chuyển sắc trắng mờ mô phỏng độ dày của khối thủy tinh lỏng */
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.15) 0%, rgba(255, 255, 255, 0.02) 60%, rgba(255, 255, 255, 0.05) 100%);
+            
+            /* Độ nhòe sâu để bẻ cong hình ảnh phía sau */
+            backdrop-filter: blur(16px) saturate(120%);
+            -webkit-backdrop-filter: blur(16px) saturate(120%);
+            
+            /* Kích hoạt bộ lọc chất lỏng */
+            filter: url('#liquid-glass');
+            
+            /* Bo góc sâu để tạo dáng giọt nước nguyên khối */
+            border-radius: 40px;
+            
+            /* Tạo viền nổi khối 3D dày ở đỉnh và hai bên */
+            border-top: 2px solid rgba(255, 255, 255, 0.6);
+            border-left: 2px solid rgba(255, 255, 255, 0.3);
+            border-right: 2px solid rgba(255, 255, 255, 0.2);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            
+            /* Phức hợp đổ bóng tạo độ sâu nổi hẳn lên trên bề mặt nền */
+            box-shadow: 
+                inset 0 4px 10px rgba(255, 255, 255, 0.4),
+                inset 0 -4px 10px rgba(0, 0, 0, 0.2),
+                0 20px 50px rgba(0, 0, 0, 0.4);
+                
             text-align: center;
+            position: relative;
         }
 
-        /* Ảnh đại diện được bo tròn hoàn hảo */
+        /* Ảnh đại diện đồng bộ hiệu ứng bo cong dầy */
         .avatar {
             width: 96px;
             height: 96px;
-            border-radius: 50%;
-            border: 2px solid rgba(255, 255, 255, 0.6);
+            border-radius: 32px;
+            border: 2px solid rgba(255, 255, 255, 0.5);
             object-fit: cover;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
         }
 
         h1 {
@@ -60,62 +87,80 @@
             font-size: 1.6rem;
             font-weight: 600;
             letter-spacing: -0.022em;
-            margin: 16px 0 6px 0;
+            margin: 18px 0 6px 0;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
         }
 
         .bio-text {
-            color: rgba(255, 255, 255, 0.6);
+            color: rgba(255, 255, 255, 0.7);
             font-size: 0.95rem;
             font-weight: 400;
             line-height: 1.4;
-            margin-bottom: 32px;
+            margin-bottom: 35px;
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
         }
 
         .links-group {
             display: flex;
             flex-direction: column;
-            gap: 16px;
+            gap: 18px;
         }
 
-        /* Nút bấm Clear Glass gốc */
+        /* Nút bấm giọt nước riêng lẻ */
         .bio-link {
             display: flex;
             align-items: center;
             justify-content: center;
             padding: 16px;
-            background: rgba(255, 255, 255, 0.02);
-            backdrop-filter: blur(4px);
-            -webkit-backdrop-filter: blur(4px);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            border-radius: 16px;
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.02) 100%);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            
+            border-top: 1.5px solid rgba(255, 255, 255, 0.4);
+            border-left: 1.5px solid rgba(255, 255, 255, 0.2);
+            border-radius: 18px;
+            
             color: #ffffff;
             text-decoration: none;
             font-size: 1rem;
             font-weight: 500;
             letter-spacing: -0.011em;
-            box-shadow: inset 0 1px 0px rgba(255, 255, 255, 0.1), 0 4px 12px rgba(0, 0, 0, 0.15);
-            transition: transform 0.3s cubic-bezier(0.25, 1, 0.5, 1), 
+            
+            box-shadow: 
+                inset 0 2px 4px rgba(255, 255, 255, 0.2),
+                0 4px 15px rgba(0, 0, 0, 0.15);
+                
+            transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), 
                         background-color 0.3s ease, 
                         border-color 0.3s ease, 
                         box-shadow 0.3s ease;
         }
 
-        /* Hiệu ứng khi di chuột đến (Hover) */
+        /* Hiệu ứng đàn hồi và đổi màu khúc xạ khi hover */
         .bio-link:hover {
-            background-color: rgba(255, 255, 255, 0.08);
-            border-color: rgba(255, 255, 255, 0.45);
-            transform: scale(1.025);
-            box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.3), 0 8px 24px rgba(0, 0, 0, 0.35);
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.2) 0%, rgba(255, 255, 255, 0.05) 100%);
+            border-color: rgba(255, 255, 255, 0.6);
+            transform: scale(1.04);
+            box-shadow: 
+                inset 0 4px 8px rgba(255, 255, 255, 0.3),
+                0 10px 25px rgba(0, 0, 0, 0.3);
         }
 
-        /* Hiệu ứng khi nhấn giữ chuột (Click) */
         .bio-link:active {
-            transform: scale(0.98);
-            background-color: rgba(255, 255, 255, 0.12);
+            transform: scale(0.97);
         }
     </style>
 </head>
 <body>
+
+    <svg class="liquid-filter">
+        <defs>
+            <filter id="liquid-glass">
+                <feTurbulence type="fractalNoise" baseFrequency="0.015" numOctaves="2" result="noise" />
+                <feDisplacementMap in="SourceGraphic" in2="noise" scale="8" xChannelSelector="R" yChannelSelector="G" />
+            </filter>
+        </defs>
+    </svg>
 
     <div class="container">
         <img src="https://images.unsplash.com/photo-1620641788421-7a1c342ea42e?q=80&w=1974&auto=format&fit=crop" alt="JunkiMC Avatar" class="avatar">
@@ -126,7 +171,7 @@
         <div class="links-group">
             <a href="https://youtube.com" target="_blank" class="bio-link">YouTube</a>
             <a href="https://discord.com" target="_blank" class="bio-link">Discord</a>
-            <a href="https://twitter.com" target="_blank" class="bio-link">Instagram / X</a>
+            <a href="https://twitter.com" target="_blank" class="bio-link">Twitter / X</a>
         </div>
     </div>
 
